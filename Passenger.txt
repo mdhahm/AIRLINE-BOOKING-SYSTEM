@@ -1,0 +1,61 @@
+public class Passenger{ 
+ 
+ //Attributes 
+ private String Name; 
+ private String PassID; 
+ private int Age; 
+ private String PhoneNum; 
+ 
+ //Default Constructor 
+ public Passenger(){ 
+ Name = ""; 
+ PassID = ""; 
+ Age = 0; 
+ PhoneNum = ""; 
+ } 
+ 
+ //Normal Constructor 
+ public Passenger(String n, String pd, int a, String pn){ 
+ Name = n; 
+ PassID = pd; 
+ Age = a; 
+ PhoneNum = pn; 
+ } 
+ 
+ //Setter 
+ public void setName(String n){ 
+ Name = n; 
+ } 
+ public void setPassID(String pd){ 
+ PassID = pd; 
+ } 
+ public void setAge(int a){ 
+ Age = a; 
+ } 
+ public void setPhoneNum(String pn){ 
+ PhoneNum = pn; 
+ } 
+ 
+ //Getter 
+ public String getName(){ 
+ return Name; 
+ } 
+ public String getPassID(){ 
+ return PassID; 
+ } 
+ public int getAge(){ 
+ return Age; 
+ } 
+ public String getPhoneNum(){ 
+ return PhoneNum; 
+ } 
+ 
+ //Abstract Method 
+ 
+ //Printer 
+ public String toString(){ 
+ return "\n\nPassenger Name: "+Name+ "\nPassenger ID: 
+"+PassID+ "\nPassenger Age: "+Age+ "\nPassenger Phone 
+Number: "+PhoneNum; 
+ } 
+}

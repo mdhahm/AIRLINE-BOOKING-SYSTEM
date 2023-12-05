@@ -1,0 +1,116 @@
+Main App:- 
+import java.text.*; 
+import java.io.*; 
+import java.util.*; 
+public class PassengerApp{ 
+ public static void main(String[] args){ 
+ Scanner scan = new Scanner(System.in); 
+ Scanner scan1 = new Scanner(System.in); 
+ DecimalFormat df = new DecimalFormat("#,###.00"); 
+ 
+ //STEP 1: Declare array of object 
+ System.out.print("=============================== Hi, Welcome to our Airline 
+Booking System. ==============================="); 
+ System.out.print("\n\t\t\t We will provide you with the best domestic flight."); 
+ System.out.print("\n\t\t\t Here are some information that you will need."); 
+ System.out.print("\n 
+_________________________________________________________________________
+________________________________ "); 
+ System.out.print("\n| KualaLumpur - KUL || \tAlorSetar - AOR ||\tLangkawi - LGK 
+||\tPenang - PEN ||\tKotaKinabalu - KK |"); 
+ System.out.print("\n| KUL to AOR -> RM250 ||\tKUL to LGK -> RM230 ||\tKUL to PEN -
+> RM150 ||\tKUL to KK -> RM390 |"); 
+ System.out.print("\n| If you are citizen, you will get 10% off. 
+|"); 
+ 
+System.out.print("\n|_______________________________________________________
+__________________________________________________|"); 
+ System.out.print("\n\nEnter size of array: "); 
+ int size = scan.nextInt(); 
+ int cnt = 0; 
+ 
+ Ticket tt[] = new Ticket[size]; 
+ Booking b[] = new Booking[size]; 
+ 
+ //STEP 2: Input(Passenger) 
+ for(int i = 0; i<size; i++){ 
+ System.out.print("Enter Passenger Name: "); 
+ String n = scan1.nextLine(); 
+ System.out.print("Enter Passenger ID: "); 
+ String pd = scan1.nextLine(); 
+ System.out.print("Enter Passenger Age: "); 
+ int a = scan.nextInt(); 
+ System.out.print("Enter Phone Number: "); 
+ String pp = scan1.nextLine(); 
+ 
+ //STEP 2: Input(Ticket) 
+ System.out.print("From[LGK/AOR/PEN/KUL/KK]: "); 
+ String f = scan1.nextLine(); 
+ System.out.print("Destination[LGK/AOR/PEN/KUL/KK]: "); 
+ String d = scan1.nextLine(); 
+ System.out.print("Quantity: "); 
+ int q = scan.nextInt(); 
+ System.out.print("Citizen[true/false]: "); 
+ boolean cz = scan.nextBoolean(); 
+ 
+ //STEP 2: Input(Ticket Classes) 
+ System.out.print("Enter Class Type[BUSINESS/ECONOMY]: "); 
+ String ct = scan1.nextLine(); 
+ 
+ //STEP 2: Input(Booking) 
+ System.out.print("Date[dd/mm/yy]: "); 
+ String dd = scan1.nextLine(); 
+ 
+ //STEP 3: Store onto object 
+ tt[i] = new TicketClasses(n,pd,a,pp,f,d,q,cz,ct); 
+ b[i] = new Booking(dd); 
+ 
+ }//End Input 
+ 
+ //STEP 4: Manipulation 
+ double[] priceTt = new double[size]; 
+ double totPrice = 0.0; 
+ for(int i = 0; i<size; i++){ 
+ if(tt[i] instanceof TicketClasses){ 
+ TicketClasses tc = (TicketClasses)tt[i]; 
+ priceTt[i] = (tt[i].ticketPrice() * tt[i].getQuantity()) + tc.calculatePrice(); 
+ totPrice += priceTt[i] ; 
+ } 
+ } 
+ 
+ //STEP 1: Exception Handling (Block Try) 
+ try{ 
+ //STEP 2: Open ALL Files 
+ PrintWriter outTicket = new PrintWriter(new BufferedWriter(new
+FileWriter("/Users/auniinsyirah/Downloads/Ticket (2).txt"))); 
+ 
+ outTicket.println("==================== YOUR TICKET FLIGHT DETAIL ===================="); 
+ 
+ for(int i = 0; i<tt.length; i++){ 
+ if(tt[i] instanceof TicketClasses){ 
+ TicketClasses tc = (TicketClasses)tt[i]; 
+ outTicket.println(tt[i].getDetail()+tc.toString()+b[i].toString()+"\nTotal Price: 
+RM"+df.format(priceTt[i])); 
+ } 
+ outTicket.println("\n---------------------------------------------------------------"); 
+ } 
+ outTicket.println("\nTotal Payment for everyone: RM"+df.format(totPrice)); 
+ 
+ //Step 9: Close ALL files 
+ outTicket.close(); 
+ 
+ }//End Try(Step 10: End Try Block) 
+ //Step 11: Exception Handling(Catch Block) 
+ catch(FileNotFoundException fe){ 
+ System.out.println(fe.getMessage()); 
+ } 
+ 
+ catch(IOException iox){ 
+ System.out.println(iox.getMessage()); 
+ } 
+ 
+ catch(Exception e){ 
+System.out.println("Problem : "+e.getMessage()); 
+ } 
+ }//End Main 
+ }//End Class

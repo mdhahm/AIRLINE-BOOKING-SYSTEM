@@ -1,0 +1,154 @@
+//Superclass 
+public abstract class Ticket{ 
+ 
+ //Attributes 
+ private String From; 
+ private String Destination; 
+ private int Quantity; 
+ private boolean Citizen; 
+ private Passenger Detail; 
+ 
+ //Default Constructor 
+ public Ticket(){ 
+ From = ""; 
+ Destination = ""; 
+ Quantity = 0; 
+ Citizen = false; 
+ } 
+ 
+ //Normal Constructor 
+ public Ticket(String n, String pd, int a , String pp, String f, 
+String d, int q, boolean cz){ 
+ Detail = new Passenger(n,pd,a,pp); 
+ From = f; 
+ Destination = d; 
+ Quantity = q; 
+ Citizen = cz; 
+ } 
+ 
+ //Setter 
+ public void setFrom(String f){ 
+ From = f; 
+ } 
+ public void setDestination(String d){ 
+ Destination = d; 
+ } 
+ public void setQuantity(int q){ 
+ Quantity = q; 
+ } 
+ public void setCitizen(boolean cz){ 
+ Citizen = cz; 
+ } 
+ 
+ //Getter 
+ public String getFrom(){ 
+ return From; 
+ } 
+ public String getDestination(){ 
+ return Destination; 
+ } 
+ public int getQuantity(){ 
+ return Quantity; 
+ } 
+ public boolean getCitizen(){ 
+ return Citizen; 
+ } 
+ public Passenger getDetail(){ 
+ return Detail; 
+ } 
+ 
+ //For FlightNo 
+ public String FlightNo(){ 
+ String flightNo = ""; 
+ 
+ if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("AOR")){ 
+ flightNo = "AA100"; 
+ } 
+ else if(From.equalsIgnoreCase("AOR") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ flightNo = "AA100"; 
+ } 
+ if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("PEN")){ 
+ flightNo = "AA101"; 
+ } 
+ else if(From.equalsIgnoreCase("PEN") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ flightNo = "AA101"; 
+ } 
+ if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("LGK")){ 
+ flightNo = "AA102"; 
+ } 
+ else if(From.equalsIgnoreCase("LGK") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ flightNo = "AA102"; 
+ } 
+ else if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("KK")){ 
+ flightNo = "AA103"; 
+ } 
+ else if(From.equalsIgnoreCase("KK") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ flightNo = "AA103";  
+ } 
+ return flightNo; 
+ } 
+ 
+ //Abstract Method 
+ public abstract double calculatePrice(); 
+ 
+ //Processor 
+ public double ticketPrice(){ 
+ double price = 0; 
+ 
+ if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("AOR")){ 
+ price = 250; 
+ } 
+ else if(From.equalsIgnoreCase("AOR") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ price = 250; 
+ } 
+ else if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("PEN")){ 
+ price = 150; 
+ } 
+ else if(From.equalsIgnoreCase("PEN") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ price = 150; 
+ } 
+ else if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("LGK")){ 
+ price = 230; 
+ } 
+ else if(From.equalsIgnoreCase("LGK") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ price = 230; 
+ } 
+ else if(From.equalsIgnoreCase("KUL") && 
+Destination.equalsIgnoreCase("KK")){ 
+ price = 390; 
+ } 
+ else if(From.equalsIgnoreCase("KK") && 
+Destination.equalsIgnoreCase("KUL")){ 
+ price = 390; 
+ } 
+ else { 
+ System.out.print("Sorry, wrong code."); 
+ price = 0; 
+ } 
+ if(Citizen){ 
+ price = price - (price * 0.10); 
+ } 
+ return price; 
+ } 
+ 
+ //Printer 
+ public String toString(){ 
+ return "\nFrom: "+From+ "\nDestination: "+Destination+ 
+"\nQuantity: "+Quantity+ "\nCitizen: "+Citizen+ "\nFlight No: 
+"+FlightNo(); 
+ } 
+}

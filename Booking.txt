@@ -1,0 +1,29 @@
+//Composition class 
+public class Booking{ 
+ 
+ //Attributes 
+ private String date; 
+
+ //Default Constructor 
+ public Booking(){ 
+ date = ""; 
+ } 
+ 
+ //Normal Constructor 
+ public Booking(String dd){ 
+ date = dd; 
+ } 
+ 
+ //Setter 
+ public void setDate(String dd){ 
+ date = dd; 
+ } 
+ //Getter 
+ public String getDate(){ 
+ return date; 
+ } 
+ //Printer 
+ public String toString(){ 
+ return "\nDate: "+date; 
+ } 
+}

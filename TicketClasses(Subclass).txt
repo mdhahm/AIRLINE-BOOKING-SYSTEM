@@ -1,0 +1,49 @@
+//Subclass 
+import java.util.*; 
+public class TicketClasses extends Ticket{ 
+ 
+ //Attributes 
+ private String classType; 
+ //Default Constructor 
+ public TicketClasses(){ 
+ classType = ""; 
+ } 
+ 
+ //Normal Constructor 
+ public TicketClasses(String n, String pd, int a, String pp, String 
+f, String d, int q, boolean cz, String ct){ 
+ super(n,pd,a,pp,f,d,q,cz); 
+ classType = ct; 
+ } 
+ 
+ //Setter 
+ public void setClassType(String ct){ 
+ classType = ct; 
+ } 
+ 
+ //Getter 
+ public String getClassType(){ 
+ return classType; 
+ } 
+ 
+ //Abtract Method 
+ public double calculatePrice(){ 
+ double price = 0; 
+ 
+ if(classType.equalsIgnoreCase("BUSINESS")){ 
+ price = price + 550; 
+ } 
+ else if(classType.equalsIgnoreCase("ECONOMY")){ 
+ price = price + 45; 
+ } 
+ else 
+ price = 0; 
+ 
+ return price * getQuantity(); 
+ } 
+ 
+ //Printer 
+ public String toString(){ 
+ return super.toString() + "\nClass Type: "+classType; 
+ } 
+}
